@@ -1,0 +1,62 @@
+var React = require("react");
+var patients= [{
+    "name": "Lisa Mcfee",
+    "avatar": " https;//s3.amazonaws.com/uiface/1.jpg",
+    "id": 0
+    },
+    {
+        "name": "Jordan Banana",
+        "avatar": " https;//s3.amazonaws.com/uiface/2.jpg",
+        "id": 1
+    },
+
+    {
+        "name": "Peter Pants",
+        "avatar": " https;//s3.amazonaws.com/uiface/3.jpg",
+        "id": 2
+    }]
+
+
+var Card= React.createClass({
+
+    render:function (){
+        return (
+            <div>
+                <h1>{this.props.name}</h1>
+                <img src={this.props.avatar} alt=""/>
+            </div>
+        )
+    }
+})
+
+var App  = React.createClass({
+    getInitialState: function (){
+        return {
+            patients: patients
+        }
+    },
+
+    render:function(){
+        return(
+            <div>
+                {this.state.people.map(function (person) {
+                    return (
+                        <Card name={person.name} avatar="{person.avatar"}> </Card>
+                    )
+                })}
+            </div>
+        )
+    }
+})
+
+
+//  var App = React.createClass({
+//     render:function (){
+//         return (
+//             <h1>hello from component</h1>
+//         )
+//     }
+// })
+
+// React.render(<h1> hello</h1>), document.body);
+React.render(<App></App>, document.body);
